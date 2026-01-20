@@ -49,3 +49,11 @@ def add(data: NumberInput):
     db.commit()
     db.close()
     return {"status": "Сохранено в Postgres!"}
+
+@app.get("/search/{phone}")
+async def search_number(phone: str):
+    # Тут логика поиска в твоей базе данных
+    # Например:
+    contacts = {"79991234567": "Иван (Доставка)", "79001112233": "Спам: Опросы"}
+    name = contacts.get(phone, "Номер не найден")
+    return {"name": name} 
